@@ -8,8 +8,15 @@ $ape = $_POST["ape"];
 $dir = $_POST["dir"];
 $cel = $_POST["cel"];
 
-$sql = "insert into persona values(default,'$doc','$nom','$ape','$dir','$cel')";
-pg_query($con, $sql);
+// Especificamos el nombre de la columna ANTES de los valores
+$sql = "INSERT INTO persona (documento, nombre, apellido, direccion, celular) 
+        VALUES ('$doc', '$nom', '$ape', '$dir', '$cel')";
 
-header("location:index.php");
+$query = pg_query($con, $sql);
+
+if($query){
+    header("location:index.php");
+} else {
+    echo "Error: " . pg_last_error($con);
+}
 ?>
