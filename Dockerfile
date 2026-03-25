@@ -1,6 +1,6 @@
 #vamos a usar una imagen base de PHP
 
-FROM php:8.1-apache
+FROM php:8.2-apache
 #instalar las dependencias necesarias para trabajar con postgresql
 RUN apt-get update && apt-get install -y \
     libpq-dev \
